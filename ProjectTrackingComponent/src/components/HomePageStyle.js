@@ -1,5 +1,6 @@
+import { Link } from "react-router-dom";
 import { styled } from "styled-components";
-
+import { Table, Tag, Input, Select } from "antd";
 export const MainPage = styled.div`
   width: 100%;
   display: grid;
@@ -255,4 +256,117 @@ export const GadgetIcon = styled.svg`
     margin-left: -42%;
     margin-top: -7%;
   }
+`;
+
+export const LinkOption = styled(Link)`
+  margin-left: 75px;
+  font-size: 19px;
+  font-weight: 700;
+  color: black;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  @media (max-width: 375px) {
+    display: none;
+  }
+`;
+
+export const LinkStyle = styled(Link)`
+  margin-left: 75px;
+  font-size: 15px;
+
+  text-decoration: none;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  @media (max-width: 375px) {
+    display: none;
+  }
+`;
+
+export const ToggleBoxStyle = styled(Tag)`
+  width: auto;
+  height: 25px;
+  background-color: lightred;
+`;
+
+export const InputStyle = styled(Input)`
+  width: 80%;
+  height: 35px;
+  margin: 0 auto;
+  margin-bottom: 3%;
+`;
+
+export const LabelStyle = styled.label`
+  margin-left: 10%;
+  margin-bottom: 1%;
+  font-size: 14px;
+  color: rgb(118, 133, 148);
+`;
+
+export const SelectStyle = styled(Select)`
+  width: 80%;
+  height: 35px;
+  margin: 0 auto;
+  margin-bottom: 3%;
+`;
+
+export const FormStyle = styled.form`
+  grid-area: filter;
+  width: 70%;
+  margin-top: 2%;
+  margin-left: 2%;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  border: 1px solid rgba(228, 231, 234, 0.5);
+`;
+
+export const ClearStyle = styled.div`
+  color: skyblue;
+  cursor: pointer;
+  margin-top: 2%;
+  margin-right: 2%;
+`;
+
+export const FormHeader = styled.div`
+  width: 100%;
+  height: 45px;
+  display: flex;
+  flex-direction: rows;
+  justify-content: space-between;
+  background-color: rgb(228, 231, 234);
+  border-radius: 12px 12px 0px 0px;
+`;
+
+export const MainDiv = styled.div`
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto;
+  grid-template-areas:
+    "nav nav"
+    "filter taggle"
+    "filter table";
+`;
+
+export const StyledTable = styled(Table)`
+  grid-area: table;
+  width: 100%;
+`;
+
+export const TaggleDiv = styled.div`
+  grid-area: taggle;
+  display: flex;
+`;
+
+export const HeaderStyle = styled.nav`
+  grid-area: nav;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 `;
