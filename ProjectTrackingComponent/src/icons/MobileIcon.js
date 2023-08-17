@@ -1,9 +1,11 @@
-const Mobile = () => {
+import { GadgetIcon } from "../components/HomePageStyle";
+
+const MobileIcon = () => {
   return (
-    <svg
+    <GadgetIcon
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
-      width="960"
+      width="730"
       height="464"
       viewBox="0 0 576 464"
     >
@@ -320,8 +322,8 @@ const Mobile = () => {
           <rect width="65" height="5" y="9" fill="#D4D7E6" rx="2.5" />
         </g>
       </g>
-    </svg>
+    </GadgetIcon>
   );
 };
 
-export default Mobile;
+export default MobileIcon;
