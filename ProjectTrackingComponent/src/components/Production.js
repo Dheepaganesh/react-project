@@ -1,5 +1,9 @@
-import { Redirect, Route } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
+import HomePage from "./HomePage";
 
-const ProtectedRoute = ({ auth, component: Component, ...rest }) => {};
+const ProtectedRoute = () => {
+  const isAuth = true;
+  return isAuth ? <Outlet /> : <Navigate to="/" />;
+};
 
 export default ProtectedRoute;

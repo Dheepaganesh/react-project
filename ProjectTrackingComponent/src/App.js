@@ -1,16 +1,24 @@
 import FilterComponent from "./components/Filter";
 import HomePage from "./components/HomePage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ProtectedRoute from "./components/Production";
+import { useState } from "react";
+import { Provider } from "react-redux";
+import store from "./components/store/store";
 
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/filter" element={<FilterComponent />} />
-        </Routes>
-      </BrowserRouter>
+      <Provider store={store}>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route element={<ProtectedRoute />}>
+              <Route path="/filter" element={<FilterComponent />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </Provider>
     </div>
   );
 }
