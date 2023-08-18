@@ -9,16 +9,22 @@ import MobileIcon from "../icons/MobileIcon";
 import MenuIcon from "../icons/OptionIcon";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { Login } from "./store/action";
+import { Login, Logout } from "./store/action";
 
 const NavigationBar = () => {
   const InputValue = useSelector((state) => state?.user?.user);
   const dispatch = useDispatch();
 
-  const Display = () => {
-    dispatch(Login());
+  const LoginUser = () => {
     console.log(InputValue);
+    dispatch(Login());
   };
+
+  const LogoutUser = () => {
+    console.log(InputValue);
+    dispatch(Logout());
+  };
+
   return (
     <NavbarImage>
       <Navigator>
@@ -26,9 +32,13 @@ const NavigationBar = () => {
         <LinkOption to="/filter">FILTER(Producted)</LinkOption>
         <Options href="./">PRICING</Options>
         <LoginOption href="./">.</LoginOption>
-        <LoginOption href="./" onClick={Display}>
-          LOGIN
-        </LoginOption>
+        {InputValue ? (
+          <LoginOption onClick={LogoutUser}>LOGOUT</LoginOption>
+        ) : (
+          <LoginOption href="./" onClick={LoginUser}>
+            LOGIN
+          </LoginOption>
+        )}
         <MenuIcon />
       </Navigator>
       <MobileIcon />

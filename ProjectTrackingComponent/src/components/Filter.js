@@ -14,9 +14,18 @@ import {
   StyledTable,
   TaggleDiv,
   HeaderStyle,
+  Directory,
+  RoleStyle,
+  HeaderOptions,
+  HeaderMenu,
+  HeaderInfo,
+  MainMenuName,
+  FilterStyle,
 } from "./HomePageStyle";
 import FilterSVG from "../svg/FilterSvg";
 import { Link } from "react-router-dom";
+import MenuSvg from "../svg/MenuSvg";
+import SearchSVG from "../svg/SearchSvg";
 
 const columns = [
   {
@@ -34,6 +43,11 @@ const columns = [
     dataIndex: "address",
     key: "address",
   },
+  {
+    title: "Progress",
+    dataIndex: "progress",
+    key: "Progress",
+  },
 ];
 
 const data = [
@@ -42,24 +56,28 @@ const data = [
     name: "Deepak",
     age: 22,
     address: "123 Main St, City",
+    progress: "InActive",
   },
   {
     key: "2",
     name: "Kumar",
     age: 25,
     address: "456 Elm St, Town",
+    progress: "Active",
   },
   {
     key: "3",
     name: "John",
     age: 35,
     address: "789 Oak St, Village",
+    progress: "OnBoard",
   },
   {
     key: "4",
     name: "Ashok",
     age: 27,
     address: "215 Health Garden",
+    progress: "InActive",
   },
 ];
 
@@ -85,7 +103,11 @@ const FilterComponent = () => {
   };
 
   const handleSingleOptionChange = (value) => {
-    setSelectedSingleOption(value);
+    if (value != "null") {
+      setSelectedSingleOption(value);
+    } else if (value === "null") {
+      setSelectedSingleOption(null);
+    }
   };
 
   const handleRemoveSingleOption = () => {
@@ -95,15 +117,27 @@ const FilterComponent = () => {
   return (
     <MainDiv>
       <HeaderStyle>
-        <LinkStyle to="/">Go Back Home</LinkStyle>
-        <div>About</div>
+        <HeaderOptions>
+          <MenuSvg />
+          <HeaderMenu>
+            <MainMenuName>Filter</MainMenuName>
+            <Directory>Organization / Account / Hierarchy</Directory>
+          </HeaderMenu>
+        </HeaderOptions>
+
+        <HeaderInfo>
+          <RoleStyle class="ant-tag sc-bAeXDU lmwrjD">
+            ORG - Academy Mortgage
+          </RoleStyle>
+          <Button type="default">Help</Button>
+        </HeaderInfo>
       </HeaderStyle>
       <FormStyle>
         <FormHeader>
-          <div>
+          <FilterStyle>
             <FilterSVG />
             <span>Filter</span>
-          </div>
+          </FilterStyle>
 
           <ClearStyle
             onClick={clearData}
@@ -120,8 +154,9 @@ const FilterComponent = () => {
         <SelectStyle
           value={selectedSingleOption}
           onChange={handleSingleOptionChange}
-          placeholder="Select a single option"
+          placeholder="Select Role"
         >
+          <Option value="null">Select Role</Option>
           <Option value="User">User(Agent)</Option>
           <Option value="Listing Manager">Listing Manager</Option>
           <Option value="Tier Manager">Tier Manager</Option>
@@ -143,11 +178,7 @@ const FilterComponent = () => {
       <TaggleDiv>
         {selectedSingleOption && (
           <div>
-            <ToggleBoxStyle
-              closable
-              onClose={handleRemoveSingleOption}
-              style={{ marginBottom: "5px" }}
-            >
+            <ToggleBoxStyle closable onClose={handleRemoveSingleOption}>
               {selectedSingleOption}
             </ToggleBoxStyle>
           </div>
@@ -157,7 +188,6 @@ const FilterComponent = () => {
             key={option}
             closable
             onClose={() => handleRemoveOption(option)}
-            style={{ marginBottom: "5px" }}
           >
             {option}
           </ToggleBoxStyle>

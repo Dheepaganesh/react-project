@@ -292,6 +292,8 @@ export const ToggleBoxStyle = styled(Tag)`
   width: auto;
   height: 25px;
   background-color: lightred;
+  margin-bottom: 5px;
+  color: rgb(118, 133, 148);
 `;
 
 export const InputStyle = styled(Input)`
@@ -303,7 +305,7 @@ export const InputStyle = styled(Input)`
 
 export const LabelStyle = styled.label`
   margin-left: 10%;
-  margin-bottom: 1%;
+  margin-bottom: 3%;
   font-size: 14px;
   color: rgb(118, 133, 148);
 `;
@@ -317,9 +319,9 @@ export const SelectStyle = styled(Select)`
 
 export const FormStyle = styled.form`
   grid-area: filter;
-  width: 70%;
-  margin-top: 2%;
-  margin-left: 2%;
+  width: 75%;
+  margin-top: 5%;
+  margin-left: 8%;
   height: 400px;
   display: flex;
   flex-direction: column;
@@ -336,7 +338,8 @@ export const ClearStyle = styled.div`
 
 export const FormHeader = styled.div`
   width: 100%;
-  height: 45px;
+  margin-bottom: 7%;
+  height: 40px;
   display: flex;
   flex-direction: rows;
   justify-content: space-between;
@@ -346,12 +349,12 @@ export const FormHeader = styled.div`
 
 export const MainDiv = styled.div`
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: 30% 35% 35%;
   grid-template-rows: auto auto;
   grid-template-areas:
-    "nav nav"
-    "filter taggle"
-    "filter table";
+    "nav nav nav"
+    "filter taggle taggle"
+    "filter table table";
 `;
 
 export const StyledTable = styled(Table)`
@@ -369,4 +372,50 @@ export const HeaderStyle = styled.nav`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+`;
+
+export const Directory = styled.p`
+  color: rgb(60, 122, 182);
+`;
+
+export const RoleStyle = styled.span`
+  font-size: 12px;
+  float: right;
+  color: rgb(27, 99, 169);
+  max-width: 265px;
+  border: 1px solid rgb(175, 200, 225);
+  border-radius: 2px;
+  height: 32px;
+  line-height: 30px;
+  text-align: center;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  background: rgb(237, 243, 248);
+  margin-left: 10px;
+  margin-right: 5px;
+`;
+
+export const HeaderOptions = styled.div`
+  display: flex;
+  margin-top: 0.5%;
+`;
+
+export const HeaderMenu = styled.div`
+  display: grid;
+  margin-top: 1%;
+`;
+
+export const HeaderInfo = styled.div`
+  margin-top: 1%;
+`;
+
+export const MainMenuName = styled.span`
+  font-size: 19px;
+  margin-left: 2%;
+  font-weight: 700;
+`;
+export const FilterStyle = styled.div`
+  margin-top: 1%;
 `;
