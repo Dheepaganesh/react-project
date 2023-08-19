@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import { Select, Tag, Form, Input, Table, Button } from "antd";
 import { styled } from "styled-components";
+import { useSelector,useDispatch } from "react-redux";
+import { Logout } from "./store/action";
 import {
-  LinkStyle,
+  ListOption,
+  MenuButtons,
+  HierarchyOption,
   ToggleBoxStyle,
   InputStyle,
   LabelStyle,
@@ -21,6 +25,8 @@ import {
   HeaderInfo,
   MainMenuName,
   FilterStyle,
+  Useroption,
+  Subhead
 } from "./HomePageStyle";
 import FilterSVG from "../svg/FilterSvg";
 import { Link } from "react-router-dom";
@@ -87,6 +93,9 @@ const FilterComponent = () => {
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [selectedSingleOption, setSelectedSingleOption] = useState(null);
 
+  const InputValue = useSelector((state) => state?.user?.user);
+  const dispatch = useDispatch();
+
   const handleSelectChange = (values) => {
     setSelectedOptions(values);
   };
@@ -95,6 +104,10 @@ const FilterComponent = () => {
     setSelectedOptions([]);
     setSelectedSingleOption(null);
   };
+
+  const LogOut =()=>{
+    dispatch(Logout())
+  }
 
   const handleRemoveOption = (option) => {
     setSelectedOptions((prevOptions) =>
@@ -129,9 +142,21 @@ const FilterComponent = () => {
           <RoleStyle class="ant-tag sc-bAeXDU lmwrjD">
             ORG - Academy Mortgage
           </RoleStyle>
-          <Button type="default">Help</Button>
+          <Button type="default" onClick={LogOut}>Logout</Button>
         </HeaderInfo>
       </HeaderStyle>
+
+      <Subhead>
+        <ListOption>
+          <HierarchyOption>Hierarchy</HierarchyOption>
+          <Useroption>Users</Useroption>
+        </ListOption>
+        <MenuButtons>
+          <Button type="default">Upload</Button>
+          <Button type="default">Add New Tier</Button>
+          <Button type="default">:</Button>
+        </MenuButtons>
+      </Subhead>
       <FormStyle>
         <FormHeader>
           <FilterStyle>
@@ -149,9 +174,9 @@ const FilterComponent = () => {
           </ClearStyle>
         </FormHeader>
         <LabelStyle>Search</LabelStyle>
-        <InputStyle placeholder="Search Name" />
+        <InputStyle id="input"  placeholder="Search Name"/>
         <LabelStyle>Select Role</LabelStyle>
-        <SelectStyle
+        <SelectStyle className="role"
           value={selectedSingleOption}
           onChange={handleSingleOptionChange}
           placeholder="Select Role"
@@ -164,6 +189,7 @@ const FilterComponent = () => {
         </SelectStyle>
         <LabelStyle>Status</LabelStyle>
         <SelectStyle
+        className="status"
           mode="multiple"
           value={selectedOptions}
           onChange={handleSelectChange}

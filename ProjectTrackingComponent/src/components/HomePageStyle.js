@@ -350,9 +350,10 @@ export const FormHeader = styled.div`
 export const MainDiv = styled.div`
   display: grid;
   grid-template-columns: 30% 35% 35%;
-  grid-template-rows: auto auto;
+  grid-template-rows: auto auto auto auto; 
   grid-template-areas:
     "nav nav nav"
+    "subhead subhead subhead"
     "filter taggle taggle"
     "filter table table";
 `;
@@ -419,3 +420,59 @@ export const MainMenuName = styled.span`
 export const FilterStyle = styled.div`
   margin-top: 1%;
 `;
+
+export const ModalInput = styled(Input)`
+  width:80%;
+  margin: 0 auto;
+  margin-top: 1%;
+  margin-bottom: 1%;
+`
+
+export const ModalButtonSplitter = styled.div`
+  width:50%;
+  display:flex;
+  flex-direction:row;
+  margin-top: 2%;
+  justify-content:space-around;
+`
+export const Subhead = styled.div`
+  grid-area: subhead;
+  display:flex;
+  flex-direction:row;
+  justify-content: space-around;
+`
+
+export const ListOption = styled.div`
+  display:flex;
+  width:120px;
+  background-color:green;
+  color:white;
+  font-size:11px;
+  border-radius:14px;
+`
+
+export const HierarchyOption = styled.div`
+  width:58px;
+  border: 1px solid white;
+  text-align:center;
+  border-top:none;
+  border-left:none;
+  padding-top:3px;
+  border-radius:14px 0px 0px 14px;
+`
+export const Useroption = styled.div`
+  width:58px;
+  margin-left:4px;
+text-align:center;
+  border: 1px solid white;
+  border-top:none;
+  border-left:none;
+  padding-top:3px;
+  border-right:none;
+  border-radius:0px 14px 14px 0px;
+`
+export const MenuButtons = styled.div`
+  display:flex;
+  flex-direction:row;
+  justify-content:space-around;
+`
