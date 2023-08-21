@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Select, Tag, Form, Input, Table, Button } from "antd";
 import { styled } from "styled-components";
-import { useSelector,useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Logout } from "./store/action";
 import {
   ListOption,
@@ -26,7 +26,7 @@ import {
   MainMenuName,
   FilterStyle,
   Useroption,
-  Subhead
+  Subhead,
 } from "./HomePageStyle";
 import FilterSVG from "../svg/FilterSvg";
 import { Link } from "react-router-dom";
@@ -92,9 +92,14 @@ const { Option } = Select;
 const FilterComponent = () => {
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [selectedSingleOption, setSelectedSingleOption] = useState(null);
+  const [input, setInput] = useState("");
 
   const InputValue = useSelector((state) => state?.user?.user);
   const dispatch = useDispatch();
+
+  const handleInput = (e) => {
+    setInput(e.target.value);
+  };
 
   const handleSelectChange = (values) => {
     setSelectedOptions(values);
@@ -103,11 +108,12 @@ const FilterComponent = () => {
   const clearData = () => {
     setSelectedOptions([]);
     setSelectedSingleOption(null);
+    setInput("");
   };
 
-  const LogOut =()=>{
-    dispatch(Logout())
-  }
+  const LogOut = () => {
+    dispatch(Logout());
+  };
 
   const handleRemoveOption = (option) => {
     setSelectedOptions((prevOptions) =>
@@ -142,7 +148,9 @@ const FilterComponent = () => {
           <RoleStyle class="ant-tag sc-bAeXDU lmwrjD">
             ORG - Academy Mortgage
           </RoleStyle>
-          <Button type="default" onClick={LogOut}>Logout</Button>
+          <Button type="default" onClick={LogOut}>
+            Logout
+          </Button>
         </HeaderInfo>
       </HeaderStyle>
 
@@ -174,9 +182,15 @@ const FilterComponent = () => {
           </ClearStyle>
         </FormHeader>
         <LabelStyle>Search</LabelStyle>
-        <InputStyle id="input"  placeholder="Search Name"/>
+        <InputStyle
+          id="input"
+          placeholder="Search Name"
+          value={input}
+          onChange={handleInput}
+        />
         <LabelStyle>Select Role</LabelStyle>
-        <SelectStyle className="role"
+        <SelectStyle
+          className="role"
           value={selectedSingleOption}
           onChange={handleSingleOptionChange}
           placeholder="Select Role"
@@ -189,7 +203,7 @@ const FilterComponent = () => {
         </SelectStyle>
         <LabelStyle>Status</LabelStyle>
         <SelectStyle
-        className="status"
+          className="status"
           mode="multiple"
           value={selectedOptions}
           onChange={handleSelectChange}
