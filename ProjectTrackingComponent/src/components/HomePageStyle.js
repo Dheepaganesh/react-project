@@ -112,6 +112,7 @@ export const LoginOption = styled.div`
   font-size: 19px;
   font-weight: 700;
   color: rgb(137, 142, 152);
+  cursor: pointer;
 
   @media (max-width: 375px) {
     display: none;
@@ -350,7 +351,7 @@ export const FormHeader = styled.div`
 export const MainDiv = styled.div`
   display: grid;
   grid-template-columns: 30% 35% 35%;
-  grid-template-rows: auto auto auto auto; 
+  grid-template-rows: auto auto auto auto;
   grid-template-areas:
     "nav nav nav"
     "subhead subhead subhead"
@@ -422,57 +423,57 @@ export const FilterStyle = styled.div`
 `;
 
 export const ModalInput = styled(Input)`
-  width:80%;
+  width: 80%;
   margin: 0 auto;
   margin-top: 1%;
   margin-bottom: 1%;
-`
+`;
 
 export const ModalButtonSplitter = styled.div`
-  width:50%;
-  display:flex;
-  flex-direction:row;
+  width: 50%;
+  display: flex;
+  flex-direction: row;
   margin-top: 2%;
-  justify-content:space-around;
-`
+  justify-content: space-around;
+`;
 export const Subhead = styled.div`
   grid-area: subhead;
-  display:flex;
-  flex-direction:row;
+  display: flex;
+  flex-direction: row;
   justify-content: space-around;
-`
+`;
 
 export const ListOption = styled.div`
-  display:flex;
-  width:120px;
-  background-color:green;
-  color:white;
-  font-size:11px;
-  border-radius:14px;
-`
+  display: flex;
+  width: 120px;
+  background-color: green;
+  color: white;
+  font-size: 11px;
+  border-radius: 14px;
+`;
 
 export const HierarchyOption = styled.div`
-  width:58px;
+  width: 60px;
   border: 1px solid white;
-  text-align:center;
-  border-top:none;
-  border-left:none;
-  padding-top:3px;
-  border-radius:14px 0px 0px 14px;
-`
+  text-align: center;
+  border-top: none;
+  border-left: none;
+  padding-top: 8px;
+  border-radius: 14px 0px 0px 14px;
+`;
 export const Useroption = styled.div`
-  width:58px;
-  margin-left:4px;
-text-align:center;
+  width: 60px;
+  text-align: center;
   border: 1px solid white;
-  border-top:none;
-  border-left:none;
-  padding-top:3px;
-  border-right:none;
-  border-radius:0px 14px 14px 0px;
-`
+  border-top: none;
+  border-left: none;
+  padding-top: 8px;
+  border-right: none;
+  border-radius: 0px 14px 14px 0px;
+`;
 export const MenuButtons = styled.div`
-  display:flex;
-  flex-direction:row;
-  justify-content:space-around;
-`
+  display: flex;
+  width: 23%;
+  flex-direction: row;
+  justify-content: space-around;
+`;
