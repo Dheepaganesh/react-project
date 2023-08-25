@@ -1,3 +1,15 @@
+function Login() {
+  cy.get("#login").click();
+
+  cy.get("#mail").type("dheepaganesh@gmail.com");
+
+  cy.get("#password").type("deepak@13");
+
+  cy.get("#submitButton").click();
+
+  cy.get("#filter").click();
+}
+
 describe("Positive Assert", () => {
   beforeEach(() => {
     cy.visit("http://localhost:3000");
@@ -22,15 +34,7 @@ describe("Positive Assert", () => {
   });
 
   it("Type-The-Search-Field", () => {
-    cy.get("#login").click();
-
-    cy.get("#mail").type("dheepaganesh@gmail.com");
-
-    cy.get("#password").type("deepak@13");
-
-    cy.get("#submitButton").click();
-
-    cy.get("#filter").click();
+    Login();
 
     const InputField = cy.get("#input");
 
@@ -88,32 +92,82 @@ describe("Negative Assert", () => {
   });
 
   it("InputTyped-Not-Have", () => {
-    cy.get("#login").click();
-    cy.get("#mail").type("kumar@gmail.com");
-    cy.get("#password").type("kumar123");
-    cy.get("#submitButton").click();
-    cy.get("#filter").click();
+    Login();
     const InputField = cy.get("#input");
     InputField.type("Hello Kumar");
     InputField.should("not.have.value", "Hello Kumar!");
   });
 
   it("Option-Length-NotExist", () => {
-    cy.get("#login").click();
-    cy.get("#mail").type("ashok@gmail.com");
-    cy.get("#password").type("ashok987");
-    cy.get("#submitButton").click();
-    cy.get("#filter").click();
+    Login();
     cy.get(".role").click();
     cy.get(".ant-select-item-option").should("not.have.length", 11);
   });
 
   it("Wrong-SelectTag-Text", () => {
-    cy.get("#login").click();
-    cy.get("#mail").type("vinoth@gmail.com");
-    cy.get("#password").type("vinoth352");
-    cy.get("#submitButton").click();
-    cy.get("#filter").click();
+    Login();
     cy.contains(".status", "select Myoption").should("not.exist");
+  });
+});
+
+describe("Function Positive Assert", () => {
+  beforeEach(() => {
+    cy.visit("http://localhost:3000");
+  });
+
+  it("Check Role Is Toggled", () => {
+    Login();
+    cy.get(".role").click();
+
+    cy.get(".ant-select-item-option")
+      .contains("Listing Manager")
+      .type("{downarrow}{enter}");
+
+    cy.get("#selectedrole").should("exist");
+  });
+
+  it("Check Status Is Toggled", () => {
+    Login();
+
+    cy.get(".status").click();
+
+    cy.get(".ant-select-item-option").contains("Activated").click();
+
+    cy.get("#selectedstatus").should("exist");
+  });
+
+  it("Check Clear Functionality is working", () => {
+    Login();
+    cy.get(".role").click();
+
+    cy.get(".ant-select-item-option")
+      .contains("Listing Manager")
+      .type("{downarrow}{enter}");
+
+    cy.get("#selectedrole").should("exist");
+
+    cy.get(".status").click();
+
+    cy.get(".ant-select-item-option").contains("Activated").click();
+
+    cy.get("#selectedstatus").should("exist");
+
+    cy.get("#filter_clear").click();
+
+    cy.get("#selectedrole").should("not.exist");
+
+    cy.get("#selectedstatus").should("not.exist");
+  });
+
+  it("Check the Role Remove is Working", () => {
+    Login();
+    cy.get(".role").click();
+
+    cy.get(".ant-select-item-option")
+      .contains("Tier Manager")
+      .type("{downarrow}{enter}");
+
+    cy.get('svg[data-icon="close"]').click();
+    cy.get("#selectedrole").should("not.exist");
   });
 });

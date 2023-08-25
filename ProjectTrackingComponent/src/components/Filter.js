@@ -35,7 +35,7 @@ import SearchSVG from "../svg/SearchSvg";
 
 const columns = [
   {
-    title: "Name",
+    title: <span>Name &#x2195;</span>,
     dataIndex: "name",
     key: "name",
   },
@@ -218,13 +218,18 @@ const FilterComponent = () => {
       <TaggleDiv>
         {selectedSingleOption && (
           <div>
-            <ToggleBoxStyle closable onClose={handleRemoveSingleOption}>
+            <ToggleBoxStyle
+              id="selectedrole"
+              closable
+              onClose={handleRemoveSingleOption}
+            >
               {selectedSingleOption}
             </ToggleBoxStyle>
           </div>
         )}
         {selectedOptions.map((option) => (
           <ToggleBoxStyle
+            id="selectedstatus"
             key={option}
             closable
             onClose={() => handleRemoveOption(option)}
